@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\W1LGraph.Common\W1LGraph.Common.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)bin\Release\netstandard2.1\W1LGraph.*.dll&quot; &quot;C:\unity\VRTest3\Assets\Graph\ForceDirected&quot; /Y" />
+  </Target>
+
+</Project>

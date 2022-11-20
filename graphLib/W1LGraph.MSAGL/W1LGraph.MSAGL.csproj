@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutomaticGraphLayout" Version="1.1.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\W1LGraph.Common\W1LGraph.Common.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)bin\Release\netstandard2.1\W1LGraph.MSAGL*.dll&quot; &quot;C:\unity\VRTest3\Assets\Graph\MSAGL&quot; /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)bin\Release\netstandard2.1\AutomaticGraphLayout.dll&quot; &quot;C:\unity\VRTest3\Assets\Graph\MSAGL&quot; /Y" />
+  </Target>
+
+</Project>
